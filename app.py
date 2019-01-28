@@ -5,6 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
+
+    #return render_template(index.tpl, frettir=frettir)
     the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
     return """
@@ -30,6 +32,10 @@ def page3():
     <p>More cats.</p>
     <img src="http://loremflickr.com/600/400" />
     """ 
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.tpl'), 404
 
 if __name__ == '__main__':
     app.run()
