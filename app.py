@@ -7,7 +7,7 @@ app = Flask(__name__)
 def homepage():
 
     response = requests.get("https://apis.is/petrol.json")
-    print(response)
+    print(response.content)
 
 
 
