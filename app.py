@@ -6,37 +6,15 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
 
-    #return render_template(index.tpl, frettir=frettir)
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
+    response = request.get("https://apis.is/petrol")
+    print(response.status_code)
 
-    return """
-    <h1>Hello heroku</h1>
-    <p>It is currently {time}.</p>
-    <p><a href="/sida2" title="Síða 2">Síða 2 </a> | <a href="/sida3" title="Síða 3">Síða 3 </a></p>
-    <img src="http://loremflickr.com/600/400" />
-    """ .format(time=the_time)
 
-@app.route('/sida2')
-def page2():
-    return """
-    <h1>Síða 2</h1>
-    <p><a href="/" title="Forsíða">Forsíða </a> | <a href="/sida3" title="Síða 3">Síða 3 </a></p>
-    <p>It is currently cathour.</p>
-    <img src="http://loremflickr.com/600/400" />
-    """ 
-@app.route('/sida3')
-def page3():
-    return """
-    <h1>Síða 3</h1>
-    <p><a href="/" title="Forsíða">Forsíða </a> | <a href="/sida2" title="Síða 2">Síða 2 </a></p>
-    <p>More cats.</p>
-    <img src="http://loremflickr.com/600/400" />
-    """ 
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('page_not_found.tpl'), 404
+#@app.errorhandler(404)
+#def page_not_found(error):
+    #return render_template('page_not_found.tpl'), 404
 
-if __name__ == '__main__':
-    app.run()
+#if __name__ == '__main__':
+    #app.run()
     #app.run(debug=True, use_reloader=True)
