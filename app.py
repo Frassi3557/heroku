@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
 
-    response = request.get("https://apis.is/petrol")
+    response = requests.get("https://apis.is/petrol.json")
     print(response)
 
 
