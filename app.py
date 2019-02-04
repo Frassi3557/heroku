@@ -7,7 +7,7 @@ app = Flask(__name__)
 def homepage():
 
     response = request.get("https://apis.is/petrol")
-    print(response.status_code)
+    print(response)
 
 
 
