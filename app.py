@@ -4,6 +4,7 @@ import urllib.request
 from flask import Flask, render_template
 from datetime import datetime
 from jinja2 import Template
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -11,8 +12,7 @@ with urllib.request.urlopen('https://apis.is/petrol') as url:
     gogn = json.loads(url.read().decode())
 
 @app.route('/')
-def homepage():
-
+def index():
     return render_template('index.tpl', gogn=gogn)
     
 
