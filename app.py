@@ -1,14 +1,19 @@
 import os
-import requests
-from flask import Flask
+import json
+import urllib.request
+from flask import Flask, render_template
 from datetime import datetime
+from jinja2 import Template
+
 app = Flask(__name__)
+
+with urllib.request.urlopen('https://apis.is/petrol') as url:
+    gogn = json.loads(url.read().decode())
 
 @app.route('/')
 def homepage():
 
-    resp = requests.get('https://apis.is/petrol')
-    print(resp.content)
+    return render_template('index.tpl', gogn=gogn)
     
 
 if __name__ == '__main__':
