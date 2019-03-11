@@ -1,7 +1,7 @@
 import os
 import json
 import urllib.request
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from jinja2 import Template
 #from . import app
 #from wtforms import EmailPasswordForm
