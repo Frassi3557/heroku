@@ -2,20 +2,22 @@ import os
 import json
 import urllib.request
 from flask import Flask, render_template
-from datetime import datetime
 from jinja2 import Template
-from datetime import datetime
+#from . import app
+#from wtforms import EmailPasswordForm
 
 app = Flask(__name__)
 
-with urllib.request.urlopen('https://apis.is/petrol') as url:
-    gogn = json.loads(url.read().decode())
-
 @app.route('/')
-def index():
-    return render_template('index.tpl', gogn=gogn)
-    
+def student():
+   return render_template('student.html')
+
+@app.route('/result',methods = ['POST', 'GET'])
+def result():
+   if request.method == 'POST':
+      result = request.form
+      return render_template("result.html",result = result)  
 
 if __name__ == '__main__':
     app.run()
-    #app.run(debug=True, use_reloader=True)
+    #app.run(debug=True, use_reloader=True) 
