@@ -16,14 +16,28 @@ def student():
 
 #Verkefni 6
 @app.route('/6')
-def login():
+def index():
     if 'username' in session:
         return 'Logged in as %s' % escape(session['username'])
     return 'You are not logged in'
 
 @app.route('/6/login' , methods = ['GET', 'POST'])
-def user():
-    return render_template('session.tpl')
+def login():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return '''
+        <form method="post">
+            <p><input type=text name=username>
+            <p><input type=submit value=Login>
+        </form>
+    '''
+
+@app.route('/6/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
