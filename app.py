@@ -12,6 +12,12 @@ app = Flask(__name__)
 def student():
    return render_template('student.tpl')
 
+#Verkefni 6
+@app.route('/6')
+def login():
+    return render_template('login.html')
+
+
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
