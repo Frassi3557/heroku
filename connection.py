@@ -12,7 +12,7 @@ try:
     with connection.cursor() as cursor:
         # Create a new record
         sql = "CREATE TABLE users(name varchar(32), user varchar(32), passw varchar(32))"
-        #cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+        cursor.execute(sql)
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
