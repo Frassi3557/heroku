@@ -10,9 +10,9 @@ from jinja2 import Template
 
 app = Flask(__name__)
 
-DATABASE_URL = os.environ['DATABASE_URL']
+#DATABASE_URL = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -44,6 +44,13 @@ def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
     return redirect(url_for('index'))
+
+#Verkefni 7
+@app.route('/7')
+def index7():
+    if 'username' in session:
+        return render_template('session.tpl')
+    return 'You are not logged in'
 
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
