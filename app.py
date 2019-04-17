@@ -45,13 +45,6 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
-#Verkefni 7
-@app.route('/7')
-def index7():
-    if 'username' in session:
-        return render_template('session.tpl')
-    return 'You are not logged in'
-
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
