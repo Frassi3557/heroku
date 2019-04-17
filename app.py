@@ -10,9 +10,9 @@ from jinja2 import Template
 
 app = Flask(__name__)
 
-#DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['DATABASE_URL']
 
-#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
